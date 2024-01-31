@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="./2048.css">
+        <link rel="stylesheet" href="./nav.css">
+        <meta name="author" content="CSIE_WebGroup">
+        <meta name="description" content="WebFinalProject">
+        <link rel="icon" href="./tmt.ico">
+        <title>2048 ------ WFP</title>
+    </head>
+
+    <body class="light-mood able-3d-display">
+        <h1>2048 Game</h1>
+        <hr>
+        <div id="thing-container">
+          <h2>Score: <span id="score" style="color: chocolate;">0</span></h2>
+          <button id="newGame" onclick="startNewGame()">New Game</button>
+      </div>
+      <div id="board">
+
+      </div>
+      <div id="gameOverModal" class="modal">
+          <div class="modal-content">
+              <h2>Game Over</h2>
+              <p>Your final score: <span id="finalScore">0</span></p>
+              <button onclick="closeGameOverModal()">Close</button>
+          </div>
+      </div>
+
+        <div id="nav">
+          <div id="nav_arrow">
+            <div id="nav_arrtt_1" class="nav-arrtt"></div>
+            <div id="nav_arrtt_2" class="nav-arrtt"></div>
+            <div id="nav_arrtt_3" class="nav-arrtt"></div>
+          </div>
+          <div id="nav_overlayer"></div>
+          <div id="nav_option_container">
+            <div id="nav_opt_1" class="nav-opt"><a href="./home.html">HOME</a></div>
+            <div id="nav_opt_2" class="nav-opt"><a href="./2048.html">2048</a></div>
+            <div id="nav_opt_3" class="nav-opt"><a href="./card.html">PAIR</a></div>
+          </div>
+          <div id="nav_setting_container">
+            <div id="nav_set_1" class="nav-set"></div>
+            <div class="set-border"></div>
+            <div id="nav_set_2" class="nav-set"></div>
+            <div class="set-border"></div>
+            <div id="nav_set_3" class="nav-set"></div>
+          </div>
+        </div>
+        <script src="./2048.js"></script>
+    </body>
+</html>

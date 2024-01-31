@@ -1,0 +1,229 @@
+body{
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+body.light-mood{
+  --card--pair--color1: #522157;
+  --card--pair--color2: #8F90C2;
+  --card--pair--color3: #bc7a9e;
+  --card--pair--color4: #E4C7B9;
+  --card--pair--color5: #c2beb9;
+  --card--color: #ba918c;
+}
+body.dark-mood{
+  --card--pair--color1: #4d458f;
+  --card--pair--color2: #867b9e;
+  --card--pair--color3: #beacdf;
+  --card--pair--color4: #cb9c9c;
+  --card--pair--color5: #ffe0e3;
+  /* --card--color: #d7bd9f; */
+  /* --card--color: #F2DCC2; */
+  --card--color: #bdd2df;
+}
+:root{
+  --card--body--width: 200px;
+  --card--body--height: 250px;
+}
+@font-face {
+  font-family: 'Noto_Tc';
+  src: url('NotoSansTC-SemiBold.ttf');
+}
+
+#card_game_container{
+  position: relative;
+  top: -10vh;
+  display: grid;
+  grid-template-columns: var(--card--body--width) var(--card--body--width) var(--card--body--width) var(--card--body--width) var(--card--body--width);
+  /* @media (max-width:1200px){
+    grid-template-columns: 200px 200px 200px ;
+  } */
+}
+#card_game_container.shuffling{
+  display: block;
+}
+#card_btn_container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  bottom: 6vh;
+}
+#card_btn_container div.btn{
+  background-color: var(--card--pair--color2);
+  border-radius: 10px;
+  width: 120px;
+  height: 70px;
+  cursor: pointer;
+  margin: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  font-family: Noto_Tc;
+}
+
+#card_game_container.shuffling ~ #card_btn_container div.btn{
+  opacity: 0.5;
+  pointer-events: none;
+  cursor:not-allowed;
+}
+
+#card_win{
+  width: 50vw;
+  height: 50vh;
+  position: fixed;
+  top: 40%;
+  left: 50%;
+  background-color: #6e59a7cc;
+  transform: translate(-50%,-50%);
+  border-radius: 60px;
+  backdrop-filter: blur(20px);
+  display: none;
+  pointer-events: none;
+  color: white;
+}
+#card_win.win-game{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-style: italic;
+  font-family: Noto_Tc;
+  font-size: 50px;
+}
+
+.card-hover-body{
+  transform-style: preserve-3d;
+  perspective: 1000px;
+  width: var(--card--body--width);
+  height: var(--card--body--height);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin: 20px 0;
+}
+.card-hover-body.cursor-prohibbit{
+  cursor:not-allowed;
+}
+#card_game_container.shuffling .card-hover-body{
+  position: fixed;
+  pointer-events: none;
+} 
+.not-ready{
+  display: none;
+  pointer-events: none;
+  cursor: alias;
+}
+
+.card-contain{
+  width: 100px;
+  height: 150px;
+  position: absolute;
+  pointer-events: none;
+  transform-style: preserve-3d;
+  border-radius: 10px;
+}
+
+
+.card-main{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  transform-style: preserve-3d;
+  transform-origin: center center;
+  transition: all.5s;
+}
+.card-main::after, .card-main::before{
+  content: '';
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  transform-style: preserve-3d;
+  transform-origin: center center;
+  backface-visibility: hidden;
+  border-radius: 5px;
+}
+.card-main::after{
+  transform: translateZ(1px);
+  background-color: var(--card--color);
+}
+.card-main::before{
+  transform: rotateY(180deg) translateZ(-1px);
+}
+.card-pair-1 .card-main::before{
+  background-color: var(--card--pair--color1);
+}
+.card-pair-2 .card-main::before{
+  background-color: var(--card--pair--color2);
+}
+.card-pair-3 .card-main::before{
+  background-color: var(--card--pair--color3);
+}
+.card-pair-4 .card-main::before{
+  background-color: var(--card--pair--color4);
+}
+.card-pair-5 .card-main::before{
+  background-color: var(--card--pair--color5);
+}
+
+.card-ani-in{
+  animation: card_hover_in .4s ease forwards;
+}
+
+.card-ani-out{
+  animation: card_hover_out .4s ease forwards;
+  transition: all .3s ease;
+}
+.card-struggle{
+  animation: struggle .1s linear infinite;
+  scale:1;
+  transition: scale .3s;
+}
+.card-flip{
+  pointer-events: none;
+}
+.card-flip .card-main{
+  rotate: 0 1 0 180deg;
+}
+
+@keyframes card_hover_in{
+  from{
+    transform: rotate3d(0,0,0,0deg);
+    scale:1; 
+    box-shadow: var(--shadow--color) 0px 0px 0px;
+  }
+  to{
+    scale:1.2;
+  }
+}
+
+@keyframes card_hover_out{
+  from{
+    scale: 1.2;
+  }
+  to{
+    transform: rotate3d(0,0,0,0deg); 
+    box-shadow: var(--shadow--color) 0px 0px 0px;
+    scale: 1;
+  }
+}
+
+@keyframes struggle{
+  25%{
+    translate:3px 0%;
+  }
+  50%{
+    translate:0% 2px;
+  }
+  75%{
+    translate:-3px 0%;
+  }
+  100%{
+    translate:0% -2px;
+  }
+}
