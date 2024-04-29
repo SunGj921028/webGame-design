@@ -11,7 +11,7 @@ First semester of the second year of university.
 
 #### This project contains Two Game makeing by Html, CSS, JavaScript
 1. 2048 Game
-2. Flip Card Game
+2. Flipping Card Game
 
 ***
 
