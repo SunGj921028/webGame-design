@@ -1,7 +1,7 @@
 # Web Design FinalProject
 ## 41147005S
 First semester of the second year of university.
----
+
 
 ***
 ### **Environment Set**
@@ -9,14 +9,13 @@ First semester of the second year of university.
 2. Open the home.html with LiveServer in VSCode
 ***
 
----
 ***
 #### This project contains Two Game makeing by Html, CSS, JavaScript
 1. 2048 Game
 2. Flip Card Game
 
 ***
----
+
 
 ### Work Table 💼
 - **傅靖嘉**
