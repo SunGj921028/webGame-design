@@ -1,4 +1,4 @@
-var nav={
+let nav={
   func: function(){
     let mood_btn = document.getElementById("nav_set_3");
     let td_btn = document.getElementById("nav_set_2");
@@ -25,12 +25,12 @@ var nav={
 }
 nav.func();
 
-var board;
-var score = 0;
-var rows = 4;
-var cols = 4;
+let board;
+let score = 0;
+let rows = 4;
+let cols = 4;
 
-var startTile; // Variable to store the starting tile for drag
+let startTile; // Variable to store the starting tile for drag
 
 window.onload = function () {
     newGame();
@@ -83,23 +83,23 @@ function newGame() {
 
 // Game Over Modal
 function openGameOverModal() {
-    var modal = document.getElementById("gameOverModal");
-    var finalScoreElement = document.getElementById("finalScore");
+    let modal = document.getElementById("gameOverModal");
+    let finalScoreElement = document.getElementById("finalScore");
     
     finalScoreElement.innerText = score;
     modal.style.display = "flex";
 }
 
 function closeGameOverModal() {
-    var modal = document.getElementById("gameOverModal");
+    let modal = document.getElementById("gameOverModal");
     modal.style.display = "none";
 }
 
 function isGameOver(board) {
     // 檢查是否有空格
-    for (let i = 0; i < board.length; i++) {
-        for (let j = 0; j < board[i].length; j++) {
-            if (board[i][j] === 0) {
+    for (const row of board) {
+        for (const cell of row) {
+            if (cell === 0) {
                 return false; // 還有空格，遊戲未結束
             }
         }
@@ -107,12 +107,15 @@ function isGameOver(board) {
   
     // 檢查相鄰格子是否有相同的數字
     for (let i = 0; i < board.length; i++) {
-        for (let j = 0; j < board[i].length; j++) {
-            // 檢查相鄰格子：上方、下方、左方、右方
+        const row = board[i]; // 取得當前列
+        for (let j = 0; j < row.length; j++) {
+            const cell = row[j]; // 取得當前格子
+    
+            // 檢查右邊和下方的相鄰格子是否相同
             if (
-                (i < board.length - 1 && board[i][j] === board[i + 1][j]) ||
-                (j < board[i].length - 1 && board[i][j] === board[i][j + 1])
-                ) {
+                (i < board.length - 1 && cell === board[i + 1][j]) || // 檢查下方
+                (j < row.length - 1 && cell === row[j + 1]) // 檢查右方
+            ) {
                 return false; // 還能合併，遊戲未結束
             }
         }
@@ -152,20 +155,15 @@ function addTwo_Four(){
         let i = Math.floor(Math.random() * rows); // 0, 1, 2, 3
         let j = Math.floor(Math.random() * cols); // 0, 1, 2, 3
         if(board[i][j] == 0){
-            // 2 or 4
-            board[i][j] = Math.random() < 0.75 ? 2 : 4;
-            // board[i][j] = 2;
+            board[i][j] = Math.random() < 0.75 ? 2 : 4; // 2 or 4
             let tile = document.getElementById(i.toString() + "*" + j.toString());
             tile.innerText = board[i][j];
-            // tile.innerText = "2";
             let id = "x" + board[i][j].toString(); // "x2
             tile.classList.add(id);
-            // tile.classList.add("x2");
             found = true;
         }
     }
     if(isGameOver(board)){
-        // window.alert("Game Over");
         openGameOverModal();
     }
 }

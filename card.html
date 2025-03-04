@@ -41,7 +41,6 @@
         }
         changing_card.className = `card-hover-body card-pair-${pair[i]}`;
       }
-      // console.log(pair);
     }
     function start(){
       let card_game_container = document.getElementById("card_game_container");
@@ -98,11 +97,9 @@
         document.getElementById("card_win").classList.add("win-game");
         document.getElementById("card_game_container").classList.add("not-ready")
       }
-      // console.log(flip_count);
     }
     function flip(obj) {
       check[parseInt(obj.id.slice(-1))]++;
-      // console.log(check);
       let sum=0;
       for (let i = 0; i < 10; i++) {sum = sum + check[i]};
       if (sum == 2){

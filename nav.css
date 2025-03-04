@@ -130,7 +130,7 @@ div#nav_option_container{
   left: 0px;
   transform: translate(0%,-50%);
 }
-div.nav-opt,div.nav-opt{
+div.nav-opt{
   width: 100%;
   height: 33.3%;
   background-color: var(--nav--option--color);
@@ -143,7 +143,7 @@ div.nav-opt,div.nav-opt{
 div.nav-opt a{
   text-decoration: none;
   color: var(--nav--optionText--color);
-  font-family: Noto_Tc,Noto_Jp;
+  font-family: Noto_Tc,Noto_Jp, sans-serif;
   font-size: 1.5rem;
   width: 100%;
   height: 100%;

@@ -21,8 +21,6 @@ body.dark-mood{
   --card--pair--color3: #beacdf;
   --card--pair--color4: #cb9c9c;
   --card--pair--color5: #ffe0e3;
-  /* --card--color: #d7bd9f; */
-  /* --card--color: #F2DCC2; */
   --card--color: #bdd2df;
 }
 :root{
@@ -32,6 +30,7 @@ body.dark-mood{
 @font-face {
   font-family: 'Noto_Tc';
   src: url('NotoSansTC-SemiBold.ttf');
+  font-family: 'Noto_Tc', sans-serif; /* Added fallback generic font family */
 }
 
 #card_game_container{
@@ -39,9 +38,6 @@ body.dark-mood{
   top: -10vh;
   display: grid;
   grid-template-columns: var(--card--body--width) var(--card--body--width) var(--card--body--width) var(--card--body--width) var(--card--body--width);
-  /* @media (max-width:1200px){
-    grid-template-columns: 200px 200px 200px ;
-  } */
 }
 #card_game_container.shuffling{
   display: block;
@@ -64,7 +60,7 @@ body.dark-mood{
   align-items: center;
   justify-content: center;
   user-select: none;
-  font-family: Noto_Tc;
+  font-family: 'Noto_Tc', sans-serif; /* Added fallback generic font family */
 }
 
 #card_game_container.shuffling ~ #card_btn_container div.btn{
@@ -92,7 +88,7 @@ body.dark-mood{
   align-items: center;
   justify-content: center;
   font-style: italic;
-  font-family: Noto_Tc;
+  font-family: 'Noto_Tc', sans-serif; /* Added fallback generic font family */
   font-size: 50px;
 }
 

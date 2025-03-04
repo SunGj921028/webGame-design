@@ -42,8 +42,7 @@ div.home-opt:hover{
 div.home-opt a{
   text-decoration: none;
   color: var(--nav--optionText--color);
-  font-family: Noto_Tc,Noto_Jp;
-  font-size: 1.5rem;
+  font-family: Noto_Tc, Noto_Jp, sans-serif; /* Added fallback generic font family */
   width: 100%;
   height: 100%;
   display: flex;
